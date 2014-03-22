@@ -31,7 +31,8 @@
 
             moveShapeHub.client.updateShape = function (model) {
                 shapeModel = model;
-                $shape.css({ left: model.left, top: model.top });
+                //$shape.css({ left: model.left, top: model.top });
+                $shape.animate(shapeModel, { duration: updateRate, queue: false });
             };
 
             $.connection.hub.start().done(function () {
