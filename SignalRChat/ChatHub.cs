@@ -8,9 +8,9 @@ namespace SignalRChat
 {
     public class ChatHub : Hub
     {
-        public void Hello()
+        public void SendMessage(string name, string message)
         {
-            Clients.All.hello();
+            Clients.All.broadCastMessage(name, message);
         }
     }
 }
