@@ -21,8 +21,7 @@ namespace StockTicker
 
         private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(250);
         private readonly Random _updateOrNotRandom = new Random();
-
-        private readonly Timer _timer;
+        
         private volatile bool _updatingStockPrices = false;
 
         private StockTicker(IHubConnectionContext clients)
@@ -37,9 +36,8 @@ namespace StockTicker
                 new Stock { Symbol = "GOOG", Price = 570.30m }
             };
             stocks.ForEach(stock => _stocks.TryAdd(stock.Symbol, stock));
-
-            _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
-
+            
+            var timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);            
         }
 
         public static StockTicker Instance
