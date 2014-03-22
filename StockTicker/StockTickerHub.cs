@@ -6,6 +6,11 @@ using Microsoft.AspNet.SignalR;
 
 namespace StockTicker
 {
+    public class StockTicker
+    {
+
+    }
+   
     public class StockTickerHub : Hub
     {
         public void Hello()
